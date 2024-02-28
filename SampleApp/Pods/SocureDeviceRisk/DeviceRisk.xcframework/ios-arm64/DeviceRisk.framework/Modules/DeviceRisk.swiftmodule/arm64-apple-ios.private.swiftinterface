@@ -1,0 +1,50 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name DeviceRisk
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Combine
+import CoreLocation
+import CoreTelephony
+@_exported import DeviceRisk
+import Foundation
+import Swift
+import SystemConfiguration
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+extension Foundation.ProcessInfo {
+  public func deviceMemory() -> Swift.Float?
+}
+public enum SigmaDeviceContext {
+  case `default`
+  case homepage
+  case signup
+  case login
+  case profile
+  case password
+  case transaction
+  case checkout
+  case other(Swift.String)
+}
+public struct SigmaDeviceOptions {
+  public let omitLocationData: Swift.Bool
+  public let advertisingID: Swift.String?
+  public let useSocureGov: Swift.Bool
+  public init(omitLocationData: Swift.Bool = false, advertisingID: Swift.String? = nil, useSocureGov: Swift.Bool = false)
+}
+public typealias SessionToken = Swift.String
+public typealias SigmaDeviceCallback = (DeviceRisk.SessionToken?, DeviceRisk.SigmaDeviceError?) -> Swift.Void
+public typealias SessionTokenCallback = (DeviceRisk.SessionToken?, DeviceRisk.SigmaDeviceError?) -> Swift.Void
+public enum SigmaDeviceError : Swift.Error {
+  case dataFetchError
+  case unknownError
+  case networkConnectionError(any Swift.Error)
+  case dataUploadError(Swift.String?, Swift.String?)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class SigmaDevice : ObjectiveC.NSObject {
+  public class func initializeSDK(_ SDKKey: Swift.String, options: DeviceRisk.SigmaDeviceOptions? = nil, callback: @escaping DeviceRisk.SigmaDeviceCallback)
+  public class func processDevice(context: DeviceRisk.SigmaDeviceContext = .other("Unknown"), callback: @escaping DeviceRisk.SessionTokenCallback)
+  public class func getSessionToken(callback: @escaping DeviceRisk.SessionTokenCallback)
+  @objc deinit
+}

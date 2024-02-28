@@ -1,0 +1,20 @@
+PODS:
+  - Alamofire (5.8.1)
+  - SocureDeviceRisk (4.1.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - SocureDeviceRisk
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - SocureDeviceRisk
+
+SPEC CHECKSUMS:
+  Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
+  SocureDeviceRisk: 5737f5ed16648d223b6ee32822db972541c90293
+
+PODFILE CHECKSUM: 2a13168a172144b1c661046e6d878d9f35e2950c
+
+COCOAPODS: 1.15.2
